@@ -21,7 +21,7 @@ public class AppModule {
     public AmazonDynamoDB provideAmazonDynamoDB() {
         // automatically configured to local region in lambda runtime environment
         String destinationTableRegion = Env.getDestinationTableRegion();
-        if (destinationTableRegion != null) {
+        if (destinationTableRegion == null) {
             return AmazonDynamoDBClientBuilder.standard().build();
         }
         else {
