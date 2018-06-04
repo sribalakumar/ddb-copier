@@ -7,6 +7,9 @@ Parameters:
   DestinationTableName:
     Type: String
     Description: DynamoDB table name of destination table to copy data to
+  DestinationTableRegion:
+    Type: String
+    Description: Region where the destination DynamoDB table is located
   StreamProcessorTimeout:
     Type: Number
     Default: 60
@@ -34,6 +37,7 @@ Resources:
       Environment:
         Variables:
           DESTINATION_TABLE_NAME: !Ref DestinationTableName
+          DESTINATION_TABLE_REGION: !Ref DestinationTableRegion
       Events:
         Stream:
           Type: DynamoDB
